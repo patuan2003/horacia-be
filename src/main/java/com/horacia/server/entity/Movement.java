@@ -1,0 +1,28 @@
+package com.horacia.server.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
+import java.util.UUID;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "movements")
+public class Movement extends BaseEntity implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private UUID id;
+
+    @Column(name = "name")
+    private String name;
+
+}
