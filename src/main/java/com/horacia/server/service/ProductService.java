@@ -13,5 +13,7 @@ public interface ProductService {
 
     List<ProductResponse> getAllProducts();
 
+    ProductResponse getProductById(UUID id);
+
 }
 

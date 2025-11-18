@@ -56,4 +56,14 @@ public class ProductServiceImpl implements ProductService {
                 .toList();
     }
 
+    @Override
+    public ProductResponse getProductById(UUID id) {
+         Product exsingProduct = productRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format(ErrorMessages.PRODUCT_NOT_FOUND, id)
+                ));
+
+         return productMapper.toDTO(exsingProduct);
+    }
+
 }

@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/products")
@@ -27,6 +29,13 @@ public class ProductController {
         return new ResponseData<>(HttpStatus.OK.value(),
                 HttpStatus.OK.getReasonPhrase(),
                 productService.getAllProducts());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseData<?> getProduct(@PathVariable UUID id) {
+        return new ResponseData<>(HttpStatus.OK.value(),
+                "find product by id",
+                productService.getProductById(id));
     }
 
 }
