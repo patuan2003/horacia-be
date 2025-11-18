@@ -48,4 +48,12 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.toDTO(productRepo.save(product));
     }
 
+    @Override
+    public List<ProductResponse> getAllProducts() {
+        return productRepo.findAll()
+                .stream()
+                .map(productMapper::toDTO)
+                .toList();
+    }
+
 }

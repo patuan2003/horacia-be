@@ -22,4 +22,11 @@ public class ProductController {
                 productService.createProduct(req));
     }
 
+    @GetMapping
+    public ResponseData<?> getAllProducts() {
+        return new ResponseData<>(HttpStatus.OK.value(),
+                HttpStatus.OK.getReasonPhrase(),
+                productService.getAllProducts());
+    }
+
 }

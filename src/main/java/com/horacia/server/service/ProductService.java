@@ -11,5 +11,7 @@ public interface ProductService {
 
     ProductResponse createProduct(ProductRequest request);
 
+    List<ProductResponse> getAllProducts();
+
 }
 
