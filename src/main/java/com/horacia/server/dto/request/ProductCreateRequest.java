@@ -14,7 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-public class ProductRequest {
+public class ProductCreateRequest {
 
     @NotBlank(message = ErrorMessages.PRODUCT_MODEL_CODE_NOT_EMPTY)
     private String name;
