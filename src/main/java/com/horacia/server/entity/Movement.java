@@ -1,5 +1,6 @@
 package com.horacia.server.entity;
 
+import com.horacia.server.util.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +25,9 @@ public class Movement extends BaseEntity implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
 }

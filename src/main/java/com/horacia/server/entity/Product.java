@@ -1,5 +1,6 @@
 package com.horacia.server.entity;
 
+import com.horacia.server.util.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -48,5 +49,9 @@ public class Product extends BaseEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "water_resistance_id")
     private WaterResistance waterResistance;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
 }

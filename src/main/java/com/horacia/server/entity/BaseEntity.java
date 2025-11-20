@@ -1,5 +1,6 @@
 package com.horacia.server.entity;
 
+import com.horacia.server.util.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -12,9 +13,6 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public abstract class BaseEntity {
-
-    @Column(name = "status")
-    private String status;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();

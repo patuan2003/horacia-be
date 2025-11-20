@@ -1,6 +1,7 @@
 package com.horacia.server.entity;
 
 
+import com.horacia.server.util.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,5 +26,9 @@ public class WaterResistance extends BaseEntity implements Serializable {
 
     @Column(name = "level")
     private String level;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
 }
