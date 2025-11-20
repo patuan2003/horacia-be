@@ -9,6 +9,7 @@ import com.horacia.server.exception.ResourceNotFoundException;
 import com.horacia.server.mapper.ProductMapper;
 import com.horacia.server.repository.ProductRepo;
 import com.horacia.server.service.*;
+import com.horacia.server.util.Status;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -122,7 +123,7 @@ public class ProductServiceImpl implements ProductService {
                         String.format(ErrorMessages.PRODUCT_NOT_FOUND, id)
                 ));
 
-        product.setStatus("DELETED");
+        product.setStatus(Status.INACTIVE);
         return productMapper.toDTO(productRepo.save(product));
     }
 
