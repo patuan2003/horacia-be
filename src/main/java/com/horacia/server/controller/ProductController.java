@@ -46,4 +46,11 @@ public class ProductController {
                 productService.updateProduct(id, req));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseData<?> deleteProduct(@PathVariable UUID id) {
+        return new ResponseData<>(HttpStatus.OK.value(),
+                "Delete product successfully",
+                productService.deleteProduct(id));
+    }
+
 }

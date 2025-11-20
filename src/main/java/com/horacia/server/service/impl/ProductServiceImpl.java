@@ -115,4 +115,15 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.toDTO(existingProduct);
     }
 
+    @Override
+    public ProductResponse deleteProduct(UUID id) {
+        Product product = productRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format(ErrorMessages.PRODUCT_NOT_FOUND, id)
+                ));
+
+        product.setStatus("DELETED");
+        return productMapper.toDTO(productRepo.save(product));
+    }
+
 }

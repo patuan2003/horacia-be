@@ -17,5 +17,7 @@ public interface ProductService {
 
     ProductResponse updateProduct(UUID id, ProductUpdateRequest request);
 
+    ProductResponse deleteProduct(UUID id);
+
 }
 
