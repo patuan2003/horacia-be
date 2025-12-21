@@ -1,11 +1,12 @@
 package com.horacia.server.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
+@Builder
 public class ResponseData<T> {
 
     private final int status;

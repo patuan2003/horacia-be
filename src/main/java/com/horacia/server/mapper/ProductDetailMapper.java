@@ -1,25 +1,24 @@
 package com.horacia.server.mapper;
 
 import com.horacia.server.dto.response.ProductDetailResponse;
-import com.horacia.server.entity.ProductDetail;
-import com.horacia.server.repository.ProductDetailRepo;
+import com.horacia.server.entity.ProductDetails;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductDetailMapper {
-
-    public ProductDetailResponse toDTO(ProductDetail detail) {
+    public ProductDetailResponse toDTO(ProductDetails details){
         return ProductDetailResponse.builder()
-                .id(detail.getId())
-                .sku(detail.getSku())
-                .price(detail.getPrice())
-                .stock(detail.getStock())
-                .productId(detail.getProduct().getId())
-                .productName(detail.getProduct().getName())
-                .strapId(detail.getStrap().getId())
-                .strapName(detail.getStrap().getName())
-                .diaColorId(detail.getDiaColor().getId())
-                .diaColorName(detail.getDiaColor().getName())
+                .id(details.getId())
+                .sku(details.getSku())
+                .price(details.getPrice())
+                .stock(details.getStock())
+                .productId(details.getProduct().getId())
+                .productName(details.getProduct().getName())
+                .strapId(details.getStrap().getId())
+                .strapName(details.getStrap().getName())
+                .diaColorId(details.getDiaColor().getId())
+                .diaColorName(details.getDiaColor().getName())
+                .status(details.getStatus())
                 .build();
     }
 
