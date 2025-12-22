@@ -1,6 +1,7 @@
 package com.horacia.server.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.horacia.server.util.Status;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,7 @@ public class ProductResponse implements Serializable {
     private String name;
     private BigDecimal diameter;
     private BigDecimal thickness;
-    private String status;
+    private Status status;
 
     private BrandResponse brand;
     private MovementResponse movement;

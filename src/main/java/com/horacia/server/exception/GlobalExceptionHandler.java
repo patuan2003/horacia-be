@@ -1,6 +1,5 @@
 package com.horacia.server.exception;
 
-import com.horacia.server.dto.response.ErrorResponse;
 import com.horacia.server.dto.response.ResponseData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ResponseData<?>> handleResourceNotFound(ResourceNotFoundException ex){
+    public ResponseEntity<ResponseData<?>> handleResourceNotFound(ResourceNotFoundException ex) {
         ResponseData<?> response = new ResponseData<>(404, ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
