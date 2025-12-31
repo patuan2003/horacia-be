@@ -6,6 +6,7 @@ import com.horacia.server.dto.response.ResponseData;
 import com.horacia.server.service.ProductDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,6 +16,7 @@ public class ProductDetailController {
 
     private  final ProductDetailService productDetailService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseData<?> getAllProductDetail(@RequestParam(defaultValue = "0", required = false) int pageNo,
                                                @RequestParam(defaultValue = "5", required = false) int pageSize,

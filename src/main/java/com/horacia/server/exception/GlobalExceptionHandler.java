@@ -1,5 +1,7 @@
 package com.horacia.server.exception;
 
+import com.horacia.server.constant.ErrorCode;
+import com.horacia.server.dto.response.ErrorResponse;
 import com.horacia.server.dto.response.ResponseData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +11,22 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(AppException.class)
+    public ResponseEntity<ResponseData<?>> handleAppException(AppException e) {
+        ErrorCode errorCode = e.getErrorCode();
+
+        ResponseData<?> responseData = ResponseData.builder()
+                .status(errorCode.getCode())
+                .message(errorCode.getMessage())
+                .build();
+
+        return ResponseEntity.badRequest().body(responseData);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResponseData<Map<String, String>>> handleValidationExceptions(
