@@ -5,6 +5,8 @@ public final class ErrorMessages {
     private ErrorMessages() {
     }
 
+    public static final String TOKEN_NOT_FOUND = "Token not found";
+
     public static final String PRODUCT_NOT_FOUND = "Product with id %s not found";
     public static final String BRAND_NOT_FOUND = "Brand with id %s not found";
     public static final String MOVEMENT_NOT_FOUND = "Movement with id %s not found";

@@ -2,6 +2,7 @@ package com.horacia.server.controller;
 
 import com.horacia.server.dto.request.AuthenticationRequest;
 import com.horacia.server.dto.request.IntrospectRequest;
+import com.horacia.server.dto.request.LogoutRequest;
 import com.horacia.server.dto.response.AuthenticationResponse;
 import com.horacia.server.dto.response.IntrospectResponse;
 import com.horacia.server.dto.response.ResponseData;
@@ -19,7 +20,15 @@ public class AuthenticationController {
 
     private final AuthenticationServiceImpl authenService;
 
-    @PostMapping
+    @PostMapping("/introspect")
+    public ResponseData<IntrospectResponse> introspect(@RequestBody IntrospectRequest request) {
+        return ResponseData.<IntrospectResponse>builder()
+                .status(200)
+                .data(authenService.introspect(request))
+                .build();
+    }
+
+    @PostMapping("/login")
     public ResponseData<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authentication) {
         var rs = authenService.authenticate(authentication);
         return ResponseData.<AuthenticationResponse>builder()
@@ -29,13 +38,12 @@ public class AuthenticationController {
                 .build();
     }
 
-    @PostMapping("/introspect")
-    public ResponseData<IntrospectResponse> introspect(@RequestBody IntrospectRequest req) {
-        var rs = authenService.introspect(req);
-        return ResponseData.<IntrospectResponse>builder()
+    @PostMapping("/logout")
+    public ResponseData<Void> introspect(@RequestBody LogoutRequest req) {
+        authenService.logout(req);
+        return ResponseData.<Void>builder()
                 .status(200)
-                .message("introspect with jwt")
-                .data(rs)
+                .message("logout successfully")
                 .build();
     }
 
